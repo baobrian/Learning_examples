@@ -1,0 +1,25 @@
+def flatten(nested):
+    print  'step 1'
+    try:
+        if isinstance(nested, str):
+            raise TypeError
+        for sublist in nested:
+            print 'step 2'
+            #yield flatten(sublist)
+            for element in flatten(sublist):
+                print 'step 3'
+                #yield element
+                print('got:', element)
+    except TypeError:
+        print('step 4')
+        yield nested
+        print('step 5')
+L=['haha',2]
+for num in flatten(L):
+    pass
+    
+#该程序很好对解释了python中生成器的工作机制，首先该程序实现的功能是将一个嵌套的列表中的元素依次的取出来，
+#首先，列表中包含了python中基本的数据类型，包含了int，string，tuple，list等，如果是string类型的话
+#程序会直接在手工的抛出一个错Typeerror，在第9行中，flatten中的调用中会返回yield:nested的值，如果是
+#int类型的话，则直接调用第9行的时候，再到第六行无法将变量循环进整形int中，所以又会抛出一个Typeerror，所以
+#该程序又会到第13行，产生yield nested值。从而达到对列表的解析。
