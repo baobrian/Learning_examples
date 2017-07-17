@@ -1,0 +1,30 @@
+#2017.07.17#
+#-Python协程指的是在一个单线程内，通过生成器yield的作用，可以实现类型子程序之间的切换
+#由于是在子程序之间的切换，所以并不需要过多的有对线程控制的资源开销，所以协程的执行效率在线程较多的情况下，效率的提升还是比较客观的
+
+事例：
+import time
+
+def consumer():
+    r = ''
+    while True:
+        n = yield r
+        if not n:
+            return
+        print('[CONSUMER] Consuming %s...' % n)
+        time.sleep(1)
+        r = '200 OK'
+
+def produce(c):
+    c.next()
+    n = 0
+    while n < 5:
+        n = n + 1
+        print('[PRODUCER] Producing %s...' % n)
+        r = c.send(n)
+        print('[PRODUCER] Consumer return: %s' % r)
+    c.close()
+
+if __name__=='__main__':
+    c = consumer()
+    produce(c)
