@@ -1,0 +1,20 @@
+#coding=utf-8
+import time
+from datetime import date
+try:
+    print '请输入年份 ：'
+    year=input()
+    print '请输入月份 ：'
+    month=input()
+    print '请输入日份 ：'
+    day=input()
+    if not isinstance(year,int) or not isinstance(month,int)  or not isinstance(day,int) :
+        raise ValueError
+except
+end_date=date(year=year,month=month,day=day).toordinal()
+sta_date=date(year=year,month=1,day=1).toordinal()
+print '数入的日期是全天中的第%d天'%(end_date-sta_date+1)
+
+
+#学习了datetime模块的相关知识，在一直困扰的编码格式的问题上，注入#coding=utf-8
+#date类型有丰富的类型及方法api
