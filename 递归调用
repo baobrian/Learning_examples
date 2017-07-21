@@ -1,0 +1,13 @@
+def factotial(param=1):
+    if param==1:
+        return 1
+    else:
+        return param*factotial(param-1)
+if __name__=='__main__':
+    try:
+        a=input('Please input a number for facitortial:')
+        print factotial(param=a)
+    except (ValueError,RuntimeError),e:
+        print e
+
+#函数可以调用函数本身
