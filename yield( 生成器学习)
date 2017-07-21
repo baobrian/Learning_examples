@@ -1,0 +1,14 @@
+def gener():
+   #一般将yield句子写在while True循环中，防止出现Stopirrtion
+    num=0
+    r=0
+    while True:
+        num=yield r
+        r=yield num
+if __name__=='__main__':
+    c=gener()
+    c.next()
+    for ii in xrange(1,11):
+        num=c.send(ii)
+        print num
+
