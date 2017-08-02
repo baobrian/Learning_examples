@@ -1,0 +1,14 @@
+class Bird:
+     def __init__(self):
+         self.hungry=True
+     def eat(selef):
+         if self.hunry:
+            print 'Ahahahaha'
+            self.hungry=False
+
+class SongBird(Bird):
+      def __init__(self):
+          Bird.__init__(self)   #未绑定方法继承父类的__init__初始化方法
+          self.voice='fuck,fenglei'
+      def song(self):
+          print self.voice
